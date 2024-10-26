@@ -5,9 +5,6 @@ const INITIAL_STATE = {
   contacts: {
     items: [],
   },
-  filters: {
-    name: "",
-  },
 };
 
 export const contactsSlice = createSlice({
@@ -15,10 +12,10 @@ export const contactsSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     addContact: (state, action) => {
-      state.users.push(action.payload);
+      state.items.push(action.payload);
     },
     deleteContact: (state, action) => {
-      state.users = state.users.filter((user) => user.id !== action.payload);
+      state.items = state.items.filter((user) => user.id !== action.payload);
     },
   },
 });
@@ -26,3 +23,5 @@ export const contactsSlice = createSlice({
 export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
 export default contactsSlice.reducer;
+
+export const selectContacts = (state) => state.contacts.items;

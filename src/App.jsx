@@ -6,6 +6,8 @@ import ContactForm from "./components/ContactForm/ContactForm";
 import "./App.css";
 import { useSelector } from "react-redux";
 import { selectNameFilter } from "./redux/filtersSlice";
+import { addContact, deleteContact } from "./redux/contactsSlice";
+import { useDispatch } from "react-redux";
 
 function App() {
   const [contacts, setContacts] = useState(() => {
@@ -13,37 +15,37 @@ function App() {
     const parsedContacts = JSON.parse(stringifiedContacts) ?? initialContacts;
     return parsedContacts;
   });
-  // const [filter, setFilter] = useState("");
+
   const filter = useSelector(selectNameFilter);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
 
-  const visibleContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const onAddContacts = addContact(newContact);
+  dispatch(onAddContacts);
+  // const onAddContacts = (newContact) => {
+  //   setContacts((prevContacts) => {
+  //     return [...prevContacts, newContact];
+  //   });
+  // };
 
-  const onAddContacts = (newContact) => {
-    setContacts((prevContacts) => {
-      return [...prevContacts, newContact];
-    });
-  };
-
-  const onDeleteContacts = (contactId) => {
-    setContacts((prevContacts) => {
-      return prevContacts.filter((contact) => contact.id !== contactId);
-    });
-  };
+  const onDeleteContacts = deleteContact(contactId);
+  dispatch(onDeleteContacts);
+  // const onDeleteContacts = (contactId) => {
+  //   setContacts((prevContacts) => {
+  //     return prevContacts.filter((contact) => contact.id !== contactId);
+  //   });
+  // };
 
   return (
     <>
       <div>
         <h1>Phonebook</h1>
-        <ContactForm onAdd={onAddContacts} />
+        <ContactForm />
         <SearchBox />
-        {/* <SearchBox value={filter} onFilter={setFilter} /> */}
-        <ContactList contacts={visibleContacts} onDelete={onDeleteContacts} />
+        <ContactList />
       </div>
     </>
   );
