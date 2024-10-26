@@ -5,6 +5,7 @@ import SearchBox from "./components/SearchBox/SearchBox";
 import ContactForm from "./components/ContactForm/ContactForm";
 import "./App.css";
 import { useSelector } from "react-redux";
+import { selectNameFilter } from "./redux/filtersSlice";
 
 function App() {
   const [contacts, setContacts] = useState(() => {
@@ -13,7 +14,7 @@ function App() {
     return parsedContacts;
   });
   // const [filter, setFilter] = useState("");
-  const filter = useSelector((state) => state.filters.name);
+  const filter = useSelector(selectNameFilter);
 
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(contacts));
