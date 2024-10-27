@@ -7,16 +7,6 @@ import "./App.css";
 
 
 function App() {
-  // const [contacts, setContacts] = useState(() => {
-  //   const stringifiedContacts = localStorage.getItem("contacts");
-  //   const parsedContacts = JSON.parse(stringifiedContacts) ?? initialContacts;
-  //   return parsedContacts;
-  // });
-
-  // useEffect(() => {
-  //   localStorage.setItem("contacts", JSON.stringify(contacts));
-  // }, [contacts]);
-
   return (
     <>
       <div>
