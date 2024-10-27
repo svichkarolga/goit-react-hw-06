@@ -20,7 +20,6 @@ const SearchBox = () => {
         <input
           className={styles.input}
           type="text"
-          // value={filterValue}
           onChange={handleSearchChange}
         />
       </div>

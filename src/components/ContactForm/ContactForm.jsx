@@ -58,7 +58,6 @@ const ContactForm = () => {
             <button
               className={styles.btn}
               type="submit"
-              onClick={() => dispatch(addContact())}
             >
               Add contact
             </button>
