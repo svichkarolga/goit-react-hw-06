@@ -11,7 +11,8 @@ const Contact = ({ data: { id, name, number }, onDelete }) => {
         {name}
       </p>
       <p className={styles.text}>
-        <FaPhone className={styles.icon} />
+        <FaPhone
+          className={styles.icon} />
         {number}
       </p>
       <button className={styles.btn} onClick={() => onDelete(id)}>

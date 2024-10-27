@@ -16,23 +16,23 @@ function App() {
     return parsedContacts;
   });
 
-  const filter = useSelector(selectNameFilter);
-  const dispatch = useDispatch();
+  // const filter = useSelector(selectNameFilter);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem("contacts", JSON.stringify(contacts));
+  // }, [contacts]);
 
-  const onAddContacts = addContact(newContact);
-  dispatch(onAddContacts);
+  // const onAddContacts = addContact();
+  // dispatch(onAddContacts);
   // const onAddContacts = (newContact) => {
   //   setContacts((prevContacts) => {
   //     return [...prevContacts, newContact];
   //   });
   // };
 
-  const onDeleteContacts = deleteContact(contactId);
-  dispatch(onDeleteContacts);
+  // const onDeleteContacts = deleteContact(contactId);
+  // dispatch(onDeleteContacts);
   // const onDeleteContacts = (contactId) => {
   //   setContacts((prevContacts) => {
   //     return prevContacts.filter((contact) => contact.id !== contactId);

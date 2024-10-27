@@ -5,19 +5,20 @@ import styles from "./ContactForm.module.css";
 import { profileSchemas } from "../../utils/schemas";
 import { ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import contactsSlice from "../../redux/contactsSlice";
+import {addContact}  from "../../redux/contactsSlice"
 
-const ContactForm = ({ onAdd }) => {
+const ContactForm = () => {
   const contacts = useSelector((state) => state.contacts.value);
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
-    onAdd({
+  const handleSubmit = (values, actions) => {
+     const newContact = {
       name: values.name,
       number: values.number,
       id: nanoid(),
-    });
-    resetForm();
+    };
+    actions.resetForm();
+     dispatch(addContact(newContact));;
   };
 
   return (
@@ -57,7 +58,7 @@ const ContactForm = ({ onAdd }) => {
             <button
               className={styles.btn}
               type="submit"
-              onClick={() => dispatch(addUser())}
+              onClick={() => dispatch(addContact())}
             >
               Add contact
             </button>
